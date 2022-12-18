@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	let mapi = new MastodonApi({
 		container_id: 'mt-timeline',
 		container_body_id: 'mt-body',
-		instance_uri: 'https://mastodon.online',
-		user_id: '180745',
-		profile_name: '@idotj',
-		toots_limit: 13,
-		hide_reblog: false,
-		hide_replies: false,		
+		instance_uri: 'https://indieweb.social',
+		user_id: '109429985620687299',
+		profile_name: '@chrisvitalos',
+		toots_limit: 5,
+		hide_reblog: true,
+		hide_replies: true,		
 		btn_see_more: 'See more posts at Mastodon'
 	});
 });
