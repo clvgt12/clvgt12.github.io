@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		instance_uri: 'https://indieweb.social',
 		user_id: '109429985620687299',
 		profile_name: '@chrisvitalos',
-		toots_limit: 5,
+		toots_limit: 20,
 		hide_reblog: true,
 		hide_replies: true,		
 		btn_see_more: 'See more posts at Mastodon'
