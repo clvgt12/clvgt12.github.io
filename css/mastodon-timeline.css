@@ -8,14 +8,18 @@
   height: calc(100% - 4rem);
   padding: 2rem 3rem;
   position: relative;
-  background: lightgray;
+  background: white;
 }
 
 .mt-timeline a:link,
 .mt-timeline a:active,
 .mt-timeline a {
   text-decoration: none;
-  color: darkblue;
+  color: #0000EE;
+}
+
+.mt-timeline a:visited {
+	color: #551ABB;
 }
 
 .mt-body {
@@ -78,6 +82,7 @@
 /* Message */
 .toot-text {
   margin-bottom: 0.25rem;
+  color: black;
 }
 .toot-text .ellipsis::after{
   content:'...';
@@ -92,6 +97,7 @@
 /* Poll */
 .toot-poll {
   margin-bottom: 0.25rem;
+  color: black;
 }
 .toot-poll ul{
   list-style: none;
