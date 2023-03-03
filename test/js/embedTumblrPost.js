@@ -167,9 +167,7 @@ embedTumblrPosts.prototype.embedPosts = function(tumblr_api_read) {
             recent.setAttribute("class", "tumblr-post");
             recent.setAttribute("data-href", this.createEmbedApiHref(post.id));
         }
-        if (!this.FANCY_POSTS) {
-            this.embedPlainPosts(node, post);
-        }
+        this.embedPlainPosts(recent, post);
         node.appendChild(recent);
         if (this.FANCY_POSTS) {
             var scr = document.createElement('script');
