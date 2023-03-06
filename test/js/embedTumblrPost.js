@@ -173,7 +173,6 @@ embedTumblrPosts.prototype.embedPosts = function(tumblr_api_read) {
 		node.appendChild(recent);
 		if (this.FANCY_POSTS) {
 			var scr = document.createElement('script');
-			scr.async = false;			
 			scr.src = "https://assets.tumblr.com/post.js";
 			node.appendChild(scr);
 		}
