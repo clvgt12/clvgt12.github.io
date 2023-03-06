@@ -4,12 +4,15 @@
 .embed-tweet {
     width: 100%;
     margin: auto;
+    max-width: 720px;
     text-align: left; 
     font-size: 14px;
   }
+  
   .embed-tweet a, .mobile .embed-tweet a {
     text-decoration: none;
   }
+
   img.tumblr-ad-banner {
     max-width: 100%;
     max-height: 100%;
