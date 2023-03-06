@@ -176,6 +176,8 @@ embedTumblrPosts.prototype.embedPosts = function(tumblr_api_read) {
 			scr.src = "https://assets.tumblr.com/post.js";
 			node.appendChild(scr);
 		}
+		recent = document.createElement('br');
+		node.appendChild(recent);
 		if (this.DEBUG) {
 			console.log('--embedPosts');
 		}
