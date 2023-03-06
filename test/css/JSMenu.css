@@ -4,11 +4,11 @@
 .embed-tweet {
     width: 100%;
     margin: auto;
-    max-width: 720px;
+    max-width: 540px;
     text-align: left; 
     font-size: 14px;
   }
-  
+
   .embed-tweet a, .mobile .embed-tweet a {
     text-decoration: none;
   }
