@@ -2,7 +2,8 @@
 /* note: this CSS file is designed to be used inside a Blogger template */
 
 .tumblr-summary-post-outer {
-	font: $(body.font);
+	font: normal 14px Verdana,sans-serif;
+	/* font: $(body.font); */
 	border: 1px solid black;
 	border-radius: 5px;
 	font-size: 14px;
@@ -36,14 +37,14 @@
 }
 
 .tumblr-summary-post-inner h1 {
-	font: $(post.title.font);
-	font-size: 20px;
+	font: normal 20px Georgia,serif;
+	/* font: $(post.title.font); */
 	color:black;
 	margin: 1.1em 0 1.1em 0;
 }
 .tumblr-summary-post-inner h2 {
-	font: $(post.title.font);
-	font-size: 18px;
+	font: normal 18px Georgia,serif;
+	/* font: $(post.title.font); */
 	color:black;
 	margin: 1.1em 0 1.1em 0;
 }
