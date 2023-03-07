@@ -31,7 +31,7 @@ let JSMenu = function(params_) {
 		this.ARROW_OUTLINE_STROKE_SIZE = (params_.Arrow_Outline_Stroke_Size) ? params_.Arrow_Outline_Stroke_Size : 3;
 		this.REGION_DIV_ID = params_.Region_Div_Id;
 		this.REGION_CONTENTS = params_.Region_Contents;
-		this.STATE = 0; // 0 = block i.e. don't display, 1 = don't block, i.e. display
+		this.STATE = 1; 
 		this.createMenu();
 		var _table = document.getElementById('{0}-table'.format(this.DIV_ID));
 		if (_table) {
