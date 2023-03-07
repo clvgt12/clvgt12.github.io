@@ -31,25 +31,19 @@ let JSMenu = function(params_) {
 		this.ARROW_OUTLINE_STROKE_SIZE = (params_.Arrow_Outline_Stroke_Size) ? params_.Arrow_Outline_Stroke_Size : 3;
 		this.REGION_DIV_ID = params_.Region_Div_Id;
 		this.REGION_CONTENTS = params_.Region_Contents;
-		this.STATE = 1; 
 		this.createMenu();
 		var _table = document.getElementById('{0}-table'.format(this.DIV_ID));
 		if (_table) {
 			_table.addEventListener('click', this.handleEvent.bind(this));
 			_table.addEventListener('touchstart', this.handleEvent.bind(this));
-			_table.addEventListener('taphold', this.handleEvent.bind(this));
 		}
 	}
-}
+};
 JSMenu.prototype.rightArrow = function() {
-	var _svg = '<svg viewbox="0 0 100 100" preserveaspectratio="xMidYMid meet"><polygon points="25,25 25,75 75,50" style="fill:{0};stroke:{1};stroke-width={2}"/></polygon></svg>'.format(this.ARROW_BODY_COLOR, this.ARROW_OUTLINE_COLOR, this.ARROW_OUTLINE_STROKE_SIZE);
-	//console.log(_svg);
-	return _svg;
+	return '<svg viewbox="0 0 100 100" preserveaspectratio="xMidYMid meet"><polygon points="25,25 25,75 75,50" style="fill:{0};stroke:{1};stroke-width={2}"/></polygon></svg>'.format(this.ARROW_BODY_COLOR, this.ARROW_OUTLINE_COLOR, this.ARROW_OUTLINE_STROKE_SIZE);
 };
 JSMenu.prototype.downArrow = function() {
-	var _svg = '<svg viewbox="0 0 100 100" preserveaspectratio="xMidYMid meet"><polygon points="25,25 50,75 75,25" style="fill:{0};stroke:{1};stroke-width={2}" /></polygon></svg>'.format(this.ARROW_BODY_COLOR, this.ARROW_OUTLINE_COLOR, this.ARROW_OUTLINE_STROKE_SIZE);
-	//console.log(_svg);
-	return _svg;
+	return '<svg viewbox="0 0 100 100" preserveaspectratio="xMidYMid meet"><polygon points="25,25 50,75 75,25" style="fill:{0};stroke:{1};stroke-width={2}" /></polygon></svg>'.format(this.ARROW_BODY_COLOR, this.ARROW_OUTLINE_COLOR, this.ARROW_OUTLINE_STROKE_SIZE);
 };
 JSMenu.prototype.createMenu = function() {
 	// Create Menu Div
@@ -96,8 +90,8 @@ JSMenu.prototype.createMenu = function() {
 	//Set initial blocking state of Region
 	_tableCellElement1.innerHTML = this.rightArrow();
 	_regionDiv.style.display = 'none';
-	this.STATE = 0; // 0 = block i.e. don't display, 1 = don't block, i.e. display
-}
+	this.STATE = 1; // 0 = block i.e. don't display, 1 = don't block, i.e. display
+};
 JSMenu.prototype.handleEvent = function() {
 	var _button = document.getElementById('{0}-button'.format(this.DIV_ID));
 	var _region = document.getElementById(this.REGION_DIV_ID);
