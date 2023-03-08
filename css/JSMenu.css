@@ -1,0 +1,89 @@
+/* Start Embedded Tumblr and Twitter posts
+----------------------------------------------- */
+
+.embed-tweet {
+  width: 100%;
+  margin: auto;
+  max-width: 540px;
+}
+
+@media screen and (max-width: 530px) {
+  .mobile .embed-tweet {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 531px) {
+  .mobile .embed-tweet {
+    max-width: 540px;
+  }
+}
+
+.embed-tweet a,
+.mobile .embed-tweet a {
+  text-decoration: none;
+}
+
+img.tumblr-ad-banner {
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid;
+}
+
+img.tumblr-ad-banner:hover {
+  border: 3px solid;
+}
+
+.tumblr-ad-banner {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile .tumblr-ad-banner {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-button {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: transparent;
+}
+
+.timeline-button svg {
+  width: 32px;
+}
+
+.timeline-button-social {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 3px solid goldenrod;
+  padding: 3px;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.timeline-button-label {
+  display: inline-block;
+  margin: 5px;
+}
+
+#TumblrMenu-table,
+#TwitterMenu-table,
+#MastodonMenu-table {
+  margin-left: -10px;
+}
+
+.mobile #TumblrMenu-table,
+.mobile #TwitterMenu-table,
+.mobile #MastodonMenu-table {
+  margin-left: 0px;
+}
