@@ -35,7 +35,7 @@ let JSMenu = function(params_) {
 		var _table = document.getElementById('{0}-table'.format(this.DIV_ID));
 		if (_table) {
 			_table.addEventListener('click', this.handleEvent.bind(this));
-			_table.addEventListener('touchstart', this.handleEvent.bind(this));
+			// _table.addEventListener('touchstart', this.handleEvent.bind(this));
 		}
 	}
 };
