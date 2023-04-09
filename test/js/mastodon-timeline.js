@@ -259,8 +259,8 @@ MastodonApi.prototype.formatDate = function (date_) {
 
 // Remove '>' markup and replace with <blockquote> HTML element in post body
 MastodonApi.prototype.markdown2Html = function () {
-	const mtBody = document.getElementById('mt-body');
-	const paragraphs = mtBody.getElementsByTagName('p');
+	const mtContainer = this.mtBodyContainer;
+	const paragraphs = mtContainer.getElementsByTagName('p');
 	
 	for (let i = 0; i < paragraphs.length; i++) {
 		const paragraph = paragraphs[i];
