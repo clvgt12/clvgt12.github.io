@@ -220,7 +220,7 @@ MastodonApi.prototype.getToots = function () {
 			'<div class="mt-toot border-bottom" data-location="' + url + '">'
 			+ avatar
 			+ user
-			+ this.blockquote(content)
+			+ content
 			+ media
 			+ poll
 			+ timestamp
