@@ -36,7 +36,9 @@ let MastodonApi = function(params_) {
   this.mtIdContainer = document.getElementById(params_.container_id);
   this.mtBodyContainer = document.getElementById(params_.container_body_id);
   // Get the toots
+  this.mtBodyContainer.style.display='none';
   this.getToots();
+  this.mtBodyContainer.style.display='';
   // Toot interactions
   this.mtIdContainer.addEventListener('click', function(event) {
     let urlToot = event.target.closest('.mt-toot').dataset.location;
@@ -249,10 +251,10 @@ MastodonApi.prototype.markdown2Html = function() {
   const mtContainer = this.mtBodyContainer;
   const paragraphs = mtContainer.getElementsByTagName('p');
   for (let i = 0; i < paragraphs.length; i++) {
-    const paragraph = paragraphs[i];
-    const innerHTML = paragraph.innerHTML;
+    var paragraph = paragraphs[i];
+    var innerHTML = paragraph.innerHTML;
     if (innerHTML.startsWith('&gt;')) {
-      const htmlString = innerHTML.replace(/^&gt;/gm, '<blockquote>').replace(/\n$/, '</blockquote>');
+      var htmlString = innerHTML.replace(/^&gt;/gm, '<blockquote>').replace(/\n$/, '</blockquote>');
       paragraph.innerHTML = htmlString;
     }
   }
