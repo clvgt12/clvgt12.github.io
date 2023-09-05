@@ -1,5 +1,5 @@
 /**
- * Mastodon embed feed timeline v3.8.1
+ * Mastodon embed feed timeline v3.8.1-1
  * More info at:
  * https://gitlab.com/idotj/mastodon-embed-feed-timeline
  */
@@ -64,7 +64,7 @@ window.addEventListener("load", () => {
  * Trigger color theme function
  * Trigger main function to build the timeline
  */
-const MastodonApi = function (params_) {
+const MastodonApi = function(params_) {
   this.DEFAULT_THEME = params_.default_theme || "auto";
   this.INSTANCE_URL = params_.instance_url;
   this.USER_ID = params_.user_id || "";
@@ -73,21 +73,21 @@ const MastodonApi = function (params_) {
   this.HASHTAG_NAME = params_.hashtag_name || "";
   this.TOOTS_LIMIT = params_.toots_limit || "20";
   this.HIDE_UNLISTED =
-    typeof params_.hide_unlisted !== "undefined"
-      ? params_.hide_unlisted
-      : false;
+    typeof params_.hide_unlisted !== "undefined" ?
+    params_.hide_unlisted :
+    false;
   this.HIDE_REBLOG =
     typeof params_.hide_reblog !== "undefined" ? params_.hide_reblog : false;
   this.HIDE_REPLIES =
     typeof params_.hide_replies !== "undefined" ? params_.hide_replies : false;
   this.HIDE_PREVIEW_LINK =
-    typeof params_.hide_preview_link !== "undefined"
-      ? params_.hide_preview_link
-      : false;
+    typeof params_.hide_preview_link !== "undefined" ?
+    params_.hide_preview_link :
+    false;
   this.MARKDOWN_BLOCKQUOTE =
-    typeof params_.markdown_blockquote !== "undefined"
-      ? params_.markdown_blockquote
-      : false;
+    typeof params_.markdown_blockquote !== "undefined" ?
+    params_.markdown_blockquote :
+    false;
   this.TEXT_MAX_LINES = params_.text_max_lines || "0";
   this.LINK_SEE_MORE = params_.link_see_more;
 
@@ -101,12 +101,12 @@ const MastodonApi = function (params_) {
 /**
  * Set the theme style choosen by user or browser/OS
  */
-MastodonApi.prototype.setTheme = function () {
+MastodonApi.prototype.setTheme = function() {
   /**
    * Set the theme value in the <html> tag using the attribute "data-theme"
    * @param {string} theme Type of theme to apply: dark or light
    */
-  const setTheme = function (theme) {
+  const setTheme = function(theme) {
     document.documentElement.setAttribute("data-theme", theme);
   };
 
@@ -125,7 +125,7 @@ MastodonApi.prototype.setTheme = function () {
 /**
  * Listing toots function
  */
-MastodonApi.prototype.buildTimeline = function () {
+MastodonApi.prototype.buildTimeline = function() {
   let mapi = this;
   let requestURL = "";
 
@@ -139,13 +139,15 @@ MastodonApi.prototype.buildTimeline = function () {
   }
 
   fetch(requestURL, {
-    method: "get",
-  })
+      method: "get",
+    })
     .then((response) => {
       if (response.ok) {
         return response.json();
       } else if (response.status === 404) {
-        throw new Error("404 Not found", { cause: response });
+        throw new Error("404 Not found", {
+          cause: response
+        });
       } else {
         throw new Error(response.status);
       }
@@ -221,7 +223,7 @@ MastodonApi.prototype.buildTimeline = function () {
    * @param {object} c Toot content
    * @param {number} i Index of toot
    */
-  const appendToot = function (c, i) {
+  const appendToot = function(c, i) {
     this.mtBodyContainer.insertAdjacentHTML(
       "beforeend",
       this.assambleToot(c, i)
@@ -229,7 +231,7 @@ MastodonApi.prototype.buildTimeline = function () {
   };
 
   // Toot interactions
-  this.mtBodyContainer.addEventListener("click", function (e) {
+  this.mtBodyContainer.addEventListener("click", function(e) {
     // Check if toot cointainer was clicked
     if (
       e.target.localName == "article" ||
@@ -246,7 +248,7 @@ MastodonApi.prototype.buildTimeline = function () {
       toogleSpoiler(e);
     }
   });
-  this.mtBodyContainer.addEventListener("keydown", function (e) {
+  this.mtBodyContainer.addEventListener("keydown", function(e) {
     // Check if Enter key was pressed with focus in an article
     if (e.key === "Enter" && e.target.localName == "article") {
       openTootURL(e);
@@ -257,7 +259,7 @@ MastodonApi.prototype.buildTimeline = function () {
    * Open toot in a new page avoiding any other natural link
    * @param {event} e User interaction trigger
    */
-  const openTootURL = function (e) {
+  const openTootURL = function(e) {
     let urlToot = e.target.closest(".mt-toot").dataset.location;
     if (
       e.target.localName !== "a" &&
@@ -274,7 +276,7 @@ MastodonApi.prototype.buildTimeline = function () {
    * Spoiler button
    * @param {event} e User interaction trigger
    */
-  const toogleSpoiler = function (e) {
+  const toogleSpoiler = function(e) {
     const nextSibling = e.target.nextSibling;
     if (nextSibling.localName === "img") {
       e.target.parentNode.classList.remove("toot-media-spoiler");
@@ -303,7 +305,7 @@ MastodonApi.prototype.buildTimeline = function () {
  * @param {object} c Toot content
  * @param {number} i Index of toot
  */
-MastodonApi.prototype.assambleToot = function (c, i) {
+MastodonApi.prototype.assambleToot = function(c, i) {
   let avatar, user, content, url, date;
 
   if (c.reblog) {
@@ -446,10 +448,12 @@ MastodonApi.prototype.assambleToot = function (c, i) {
     }
   }
 
-  // Preview link
+  // Preview link, but only if no media is present
   let preview_link = "";
-  if (!this.HIDE_PREVIEW_LINK && c.card) {
-    preview_link = this.placePreviewLink(c.card);
+  if (media === "") {
+    if (!this.HIDE_PREVIEW_LINK && c.card) {
+      preview_link = this.placePreviewLink(c.card);
+    }
   }
 
   // Poll
@@ -498,7 +502,7 @@ MastodonApi.prototype.assambleToot = function (c, i) {
  * @param {string} c Text content
  * @returns {string} Text content modified
  */
-MastodonApi.prototype.formatTootText = function (c) {
+MastodonApi.prototype.formatTootText = function(c) {
   let content = c;
 
   // Format hashtags and mentions
@@ -511,7 +515,7 @@ MastodonApi.prototype.formatTootText = function (c) {
       "<p>&gt;",
       "</p>",
       "<blockquote><p>",
-      "</blockquote></p>"
+      "</p></blockquote>"
     );
   }
 
@@ -523,7 +527,7 @@ MastodonApi.prototype.formatTootText = function (c) {
  * @param {string} c Text content
  * @returns {string} Text content modified
  */
-MastodonApi.prototype.addTarget2hashtagMention = function (c) {
+MastodonApi.prototype.addTarget2hashtagMention = function(c) {
   let content = c.replaceAll('rel="tag"', 'rel="tag" target="_blank"');
   content = content.replaceAll(
     'class="u-url mention"',
@@ -542,7 +546,7 @@ MastodonApi.prototype.addTarget2hashtagMention = function (c) {
  * @param {string} replacedTagClose New end HTML tag
  * @returns {string} Text in HTML format
  */
-MastodonApi.prototype.replaceHTMLtag = function (
+MastodonApi.prototype.replaceHTMLtag = function(
   c,
   initialTagOpen,
   initialTagClose,
@@ -564,7 +568,7 @@ MastodonApi.prototype.replaceHTMLtag = function (
  * @param {boolean} s Spoiler/Sensitive status
  * @returns {string} Media in HTML format
  */
-MastodonApi.prototype.placeMedias = function (m, s) {
+MastodonApi.prototype.placeMedias = function(m, s) {
   let spoiler = s || false;
   const pic =
     '<div class="toot-media ' +
@@ -586,27 +590,27 @@ MastodonApi.prototype.placeMedias = function (m, s) {
  * @param {object} c Preview link content
  * @returns {string} Preview link in HTML format
  */
-MastodonApi.prototype.placePreviewLink = function (c) {
+MastodonApi.prototype.placePreviewLink = function(c) {
   let card =
     '<a href="' +
     c.url +
     '" class="toot-preview-link" target="_blank" rel="noopener noreferrer">' +
-    (c.image
-      ? '<div class="toot-preview-image"><img onload="removeSpinner(this)" onerror="removeSpinner(this)" src="' +
-        c.image +
-        '" alt="" loading="lazy" /></div>'
-      : '<div class="toot-preview-noImage">📄</div>') +
+    (c.image ?
+      '<div class="toot-preview-image"><img onload="removeSpinner(this)" onerror="removeSpinner(this)" src="' +
+      c.image +
+      '" alt="" loading="lazy" /></div>' :
+      '<div class="toot-preview-noImage">📄</div>') +
     "</div>" +
     '<div class="toot-preview-content">' +
-    (c.provider_name
-      ? '<span class="toot-preview-provider">' + c.provider_name + "</span>"
-      : "") +
+    (c.provider_name ?
+      '<span class="toot-preview-provider">' + c.provider_name + "</span>" :
+      "") +
     '<span class="toot-preview-title">' +
     c.title +
     "</span>" +
-    (c.author_name
-      ? '<span class="toot-preview-author">By ' + c.author_name + "</span>"
-      : "") +
+    (c.author_name ?
+      '<span class="toot-preview-author">By ' + c.author_name + "</span>" :
+      "") +
     "</div>" +
     "</a>";
 
@@ -618,7 +622,7 @@ MastodonApi.prototype.placePreviewLink = function (c) {
  * @param {string} d Date in ISO format (YYYY-MM-DDTHH:mm:ss.sssZ)
  * @returns {string} Date formated (MM DD, YYYY)
  */
-MastodonApi.prototype.formatDate = function (d) {
+MastodonApi.prototype.formatDate = function(d) {
   const monthNames = [
     "Jan",
     "Feb",
@@ -650,7 +654,7 @@ MastodonApi.prototype.formatDate = function (d) {
  * Loading spinner
  * @param {object} e Image containing the spinner
  */
-const removeSpinner = function (e) {
+const removeSpinner = function(e) {
   const spinnerCSS = "loading-spinner";
 
   // Find closest parent container (1st, 2nd or 3rd level)
