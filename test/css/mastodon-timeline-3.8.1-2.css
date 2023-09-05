@@ -368,7 +368,7 @@ html[data-theme="dark"] {
   border: 1px solid var(--line-gray-color);
   border-radius: 0.5rem;
   color: var(--link-color);
-  font-size: 0.8rem;
+  font-size: 1.0rem;
   margin: 1rem 0 0.5rem 0;
   overflow: hidden;
 }
