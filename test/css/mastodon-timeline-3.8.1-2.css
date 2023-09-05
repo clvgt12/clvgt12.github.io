@@ -239,12 +239,12 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --bg-color: #282c37;
-  --bg-hover-color: #313543;
-  --line-gray-color: #393f4f;
-  --content-text: #fff;
-  --link-color: #8c8dff;
-  --error-text-color: #fe6c6c;
+  --bg-color: #fff;
+  --bg-hover-color: #d9e1e8;
+  --line-gray-color: #c0cdd9;
+  --content-text: #000;
+  --link-color: #3a3bff;
+  --error-text-color: #8b0000;
 }
 
 /* Main container */
