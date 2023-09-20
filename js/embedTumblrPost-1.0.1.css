@@ -1,0 +1,77 @@
+/* ---------------------------------------------------------------------
+embedTumblrPosts: Dynamically create a timeline from a Tumblr blog.
+https://gitlab.com/clvgt12/embed-tumblr-posts
+
+Copyright (C) 2023  @clvgt12@gitlab.com
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>. 
+--------------------------------------------------------------------- */
+
+.tumblr-summary-post-outer {
+	font: normal 14px Verdana,sans-serif;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 14px;
+	background-color: white;
+	color:black;
+	margin: 10px 0px 0px 0px;
+}
+.tumblr-summary-post-header {
+	margin: 15px 15px 0px 15px;
+	font-size: 14px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.tumblr-summary-post-inner {
+	border: none;
+	margin: 0px 15px 0px 15px;
+}
+
+.tumblr-summary-post-header a {
+  margin: 0.5em;
+}
+
+.tumblr-summary-post-header a:link, .tumblr-summary-post-inner a:link { 
+	color: #0000EE; 
+}
+
+.tumblr-summary-post-header a:visited, .tumblr-summary-post-inner a:visited { 
+	color: #551A8B; 
+}
+
+.tumblr-summary-post-inner h1 {
+	font: normal 20px Georgia,serif;
+	color:black;
+	margin: 1.1em 0 1.1em 0;
+}
+.tumblr-summary-post-inner h2 {
+	font: normal 18px Georgia,serif;
+	color:black;
+	margin: 1.1em 0 1.1em 0;
+}
+.tumblr-summary-post-inner img {
+	width: 100%;
+}
+
+.tumblr-summary-post-inner figure {
+	margin: 0.25em 0em 0.25em 0em;
+	text-align: center;
+}
+
+.tumblr-summary-post-footer { 
+	font-size: 12px; 
+	color: darkgray;
+}
