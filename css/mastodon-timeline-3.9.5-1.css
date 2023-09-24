@@ -1,0 +1,375 @@
+/* Mastodon embed feed timeline 3.9.5-1 */
+/* More info at: */
+/* https://gitlab.com/clvgt12/mastodon-embed-feed-timeline */
+
+/* Variables */
+:root {
+  --text-max-lines: none;
+	--avatar-size: 48px;
+	--radius-size: 0.25rem;
+}
+
+/* Theme colors */
+:root,
+html[data-theme="light"] {
+  --bg-color: #fff;
+  --bg-hover-color: #d9e1e8;
+  --line-gray-color: #c0cdd9;
+  --content-text: #000;
+  --link-color: #3a3bff;
+  --error-text-color: #8b0000;
+}
+
+html[data-theme="dark"] {
+  --bg-color: #fff;
+  --bg-hover-color: #d9e1e8;
+  --line-gray-color: #c0cdd9;
+  --content-text: #000;
+  --link-color: #3a3bff;
+  --error-text-color: #8b0000;
+}
+
+/* Main container */
+.mt-container {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  background: var(--bg-color);
+  scrollbar-color: var(--bg-hover-color) rgba(0, 0, 0, 0.1);
+}
+.mt-container a:link,
+.mt-container a:active,
+.mt-container a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+.mt-container a:not(.mt-toot-preview):hover {
+  text-decoration: underline;
+}
+.mt-container::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.mt-container::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.mt-container::-webkit-scrollbar-thumb {
+  border: 0 var(--content-text);
+  border-radius: 2rem;
+  background: var(--bg-hover-color);
+}
+.mt-container::-webkit-scrollbar-track {
+  border: 0 var(--content-text);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.mt-body {
+  padding: 1rem 1.5rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.mt-body .invisible {
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* Toot container */
+.mt-toot {
+  margin: var(--radius-size);
+  padding: 1rem 0.5rem 1.5rem 0.5rem;
+	font-family: sans-serif;
+  position: relative;
+  min-height: 3.75rem;
+  background-color: transparent;
+  border-bottom: 1px solid var(--line-gray-color);
+}
+.mt-toot:hover,
+.mt-toot:focus {
+  cursor: pointer;
+  background-color: var(--bg-hover-color);
+}
+.mt-toot p:last-child {
+  margin-bottom: 0;
+}
+
+/* User avatar */
+.mt-toot-avatar {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 1rem;
+  left: var(--radius-size);
+  border-radius: var(--radius-size);
+  overflow: hidden;
+}
+.mt-toot-avatar-image img {
+  width: 100%;
+  height: auto;
+}
+.mt-toot-avatar-image .mt-toot-avatar-boosted {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-size);
+  overflow: hidden;
+}
+.mt-toot-avatar-image .mt-toot-avatar-account {
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 1.5rem;
+  left: 1.5rem;
+  position: absolute;
+  border-radius: var(--radius-size);
+  overflow: hidden;
+}
+
+/* User name and date */
+.mt-toot-header {
+  display: flex;
+  justify-content: space-between;
+	height: var(--avatar-size);
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.mt-toot-header-user {
+  font-weight: 600;
+  padding-right: 1rem;
+	margin-left: var(--avatar-size);
+}
+.mt-toot-header-user > a {
+  color: var(--content-text) !important;
+  text-decoration: none;
+}
+.mt-toot-header-date {
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+/* Text */
+
+.mt-toot-text {
+  margin-bottom: 1rem;
+  color: var(--content-text);
+}
+.mt-toot-text .spoiler-btn {
+  display: inline-block;
+}
+.mt-toot-text .spoiler-text-hidden {
+  display: none;
+}
+.mt-toot-text.truncate {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: var(--text-max-lines);
+  -webkit-box-orient: vertical;
+}
+.mt-toot-text:not(.truncate) .ellipsis::after {
+  content: "...";
+}
+.mt-toot-text blockquote {
+  border-left: var(--radius-size) solid var(--line-gray-color);
+  margin-left: 0;
+  padding-left: 0.5rem;
+}
+.mt-toot-text .custom-emoji {
+  height: 1.5rem;
+  min-width: 1.5rem;
+  margin-bottom: calc(0 - var(--radius-size));
+  width: auto;
+}
+
+/* Poll */
+.mt-toot-poll {
+  margin-bottom: var(--radius-size);
+  color: var(--content-text);
+}
+.mt-toot-poll ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mt-toot-poll ul li {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.mt-toot-poll ul li:not(:last-child) {
+  margin-bottom: var(--radius-size);
+}
+.mt-toot-poll ul li:before {
+  content: "◯";
+  padding-right: 0.5rem;
+}
+
+/* Medias */
+.mt-toot-media {
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.mt-toot-media > .spoiler-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+.mt-toot-media-spoiler > img {
+  filter: blur(2rem);
+}
+.img-ratio14_7 {
+  position: relative;
+  padding-top: 56.95%;
+  width: 100%;
+}
+.img-ratio14_7 > img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Preview link */
+.mt-toot-preview {
+  min-height: 4rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-gray-color);
+  border-radius: 0.5rem;
+  color: var(--link-color);
+  font-size: 0.8rem;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+.mt-toot-preview-image {
+  width: 100%;
+  align-self: stretch;
+}
+.mt-toot-preview-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mt-toot-preview-noImage {
+  width: 40%;
+  font-size: 1.5rem;
+  align-self: inherit;
+  text-align: left;
+}
+.mt-toot-preview-content {
+  width: 95%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+}
+.mt-toot-preview-title {
+  font-weight: 600;
+	font-size: 1.0rem;
+	font-family: serif;
+}
+
+/* Spoiler button */
+.spoiler-btn {
+  border-radius: 2px;
+  background-color: var(--line-gray-color);
+  border: 0;
+  color: var(--content-text);
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0 0.35rem;
+  text-transform: uppercase;
+  line-height: 1.25rem;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+/* Counter bar */
+.mt-toot-counter-bar {
+  display: flex;
+  gap: clamp(var(--radius-size), 1vw, 1.5rem);
+  color: var(--link-color);
+	margin-left: var(--radius-size);
+}
+.mt-toot-counter-bar-replies,
+.mt-toot-counter-bar-reblog,
+.mt-toot-counter-bar-favorites {
+  display: flex;
+  font-size: 0.75rem;
+  gap: var(--radius-size);
+  align-items: center;
+  opacity: 0.5;
+}
+.mt-toot-counter-bar-replies > svg,
+.mt-toot-counter-bar-reblog > svg,
+.mt-toot-counter-bar-favorites > svg {
+  width: 1rem;
+  fill: var(--link-color);
+}
+
+/* Error */
+.mt-error {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 3.5rem);
+  width: calc(100% - 4.5rem);
+  justify-content: center;
+  align-items: center;
+  color: var(--error-text-color);
+  padding: 0.75rem;
+  text-align: center;
+}
+.mt-error-icon {
+  font-size: 2rem;
+}
+.mt-error-message {
+  padding: 1rem 0;
+}
+.mt-error-message hr {
+  color: var(--line-gray-color);
+}
+
+/* Loading spinner */
+.mt-body > .loading-spinner {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  margin: auto;
+  top: calc(50% - 1.5rem);
+  right: calc(50% - 1.5rem);
+}
+.loading-spinner {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.0' viewBox='0 0 128 128' %3E%3Cg%3E%3Cpath d='M64 128A64 64 0 0 1 18.34 19.16L21.16 22a60 60 0 1 0 52.8-17.17l.62-3.95A64 64 0 0 1 64 128z' fill='%23404040'/%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 64 64' to='360 64 64' dur='1000ms' repeatCount='indefinite'%3E%3C/animateTransform%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  background-size: min(2.5rem, calc(100% - 0.5rem));
+}
+
+/* Footer (See more link) */
+.mt-footer {
+  margin: 1rem auto 2rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+/* Hidden elements */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
