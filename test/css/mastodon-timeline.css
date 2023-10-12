@@ -1,4 +1,4 @@
-/* Mastodon embed feed timeline v3.10.0-3 */
+/* Mastodon embed feed timeline v3.10.1-1 */
 /* More info at: */
 /* https://gitlab.com/clvgt12/mastodon-embed-feed-timeline */
 
@@ -216,12 +216,19 @@ text-decoration: underline;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
+.mt-toot-poll.mt-toot-poll-expired ul li {
+  color: var(--contrast-gray-color);
+}
 .mt-toot-poll ul li:not(:last-child) {
   margin-bottom: 0.25rem;
 }
 .mt-toot-poll ul li:before {
   content: "◯";
   padding-right: 0.5rem;
+}
+.mt-toot-poll.mt-toot-poll-expired ul li:before {
+  content: "";
+  padding-right: 0;
 }
 
 /* Medias */
@@ -253,6 +260,7 @@ text-decoration: underline;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  color: var(--content-text);
 }
 
 /* Preview link */
@@ -276,6 +284,7 @@ text-decoration: underline;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  color: var(--content-text);
 }
 .mt-toot-preview-noImage {
   width: 40%;
